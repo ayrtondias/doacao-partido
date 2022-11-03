@@ -1,0 +1,7 @@
+{
+  "name": "doacao-partido",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
