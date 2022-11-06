@@ -1,0 +1,26 @@
+ion-content{
+    .black{
+        background-color: black;
+        background-image: url('/assets/back.png');
+        width: 100vw;
+        height: 100vh;
+        .logo{
+            background-image: url('/assets/logo2.png');
+            background-repeat: no-repeat;
+            padding: 18%;
+            background-position: center;
+            background-size: 100px;
+        }
+        .item{
+          margin-left: 20px;
+          margin-right: 20px;
+          border-radius: 30px;
+        }
+        .botao{
+          margin-left: 60px;
+          margin-right: 60px;
+          border-radius: 50px;
+        }
+
+  }
+}
