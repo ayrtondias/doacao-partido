@@ -19,6 +19,22 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'registrar-doacao',
+    loadChildren: () => import('./pages/registrar-doacao/registrar-doacao.module').then( m => m.RegistrarDoacaoPageModule)
+  },
+  {
+    path: 'doacoes-aprovada',
+    loadChildren: () => import('./pages/doacoes-aprovada/doacoes-aprovada.module').then( m => m.DoacoesAprovadaPageModule)
+  },
+  {
+    path: 'listar-doacoes',
+    loadChildren: () => import('./pages/listar-doacoes/listar-doacoes.module').then( m => m.ListarDoacoesPageModule)
+  },
+  {
+    path: 'configuracoes',
+    loadChildren: () => import('./pages/configuracoes/configuracoes.module').then( m => m.ConfiguracoesPageModule)
+  },
 
 
 ];

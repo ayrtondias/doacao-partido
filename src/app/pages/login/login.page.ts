@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Validate } from '../../util/validate';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +14,8 @@ export class LoginPage implements OnInit {
 
   loading: HTMLIonLoadingElement;
   contador = 0;
-  email: string = '';
+  email = '';
   senha = '';
-  produtos : any;
 
   constructor(
     private router: Router,
@@ -28,12 +28,28 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  async presentToast( mensagem: string ) {
+    const toast = await this.toastController.create({
+      message: mensagem,
+      duration: 3000,
+      position: 'bottom'
+    });
+    await toast.present();
+  }
+
+  canSave(): boolean{
+    return Validate.validateEmail(this.email)  &&
+    this.senha != '' &&
+    this.senha.length >= 6;
+  }
+
   async entrar(){
     this.showLoading();
     console.log('entrando...');
     //this.fireAuth.createUserWithEmailAndPassword()
     try{
       const result = await this.fireAuth.signInWithEmailAndPassword(this.email, this.senha);
+
       console.log(result);
       //firestore.collection(usuarios).doc(result.user.uid)
       //if(usuario.estaAtivo===true)
@@ -63,14 +79,4 @@ export class LoginPage implements OnInit {
   private async fecharLoading(){
     await this.loading.dismiss();
   }
-
-  async presentToast( mensagem: string ) {
-    const toast = await this.toastController.create({
-      message: mensagem,
-      duration: 3000,
-      position: 'bottom'
-    });
-    await toast.present();
-  }
-
 }

@@ -3,6 +3,9 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { Validate } from '../../util/validate';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+
+
 
 @Component({
   selector: 'app-register',
@@ -13,6 +16,8 @@ export class RegisterPage implements OnInit {
   loading: HTMLIonLoadingElement;
   nome = '';
   sobrenome = '';
+  cpf = '';
+  telefone = '';
   email = '';
   senha = '';
   confsenha = '';
@@ -23,7 +28,8 @@ export class RegisterPage implements OnInit {
     private alertController: AlertController,
     private toastController: ToastController,
     private loadingCtrl: LoadingController,
-    public firestore: AngularFirestore
+    public firestore: AngularFirestore,
+    private fireAuth: AngularFireAuth
   ) { }
 
   ngOnInit() {
@@ -39,7 +45,7 @@ export class RegisterPage implements OnInit {
   canSave(): boolean{
     return Validate.validateEmail(this.email)  &&
     this.senha===this.confsenha &&
-    this.senha.length >= 3;
+    this.senha.length >= 6;
   }
 
   async presentAlert() {
@@ -73,10 +79,15 @@ export class RegisterPage implements OnInit {
                   senha: this.senha,
                   nome: this.nome,
                   sobrenome: this.sobrenome,
+                  cpf: this.cpf,
+                  telefone: this.telefone,
                   estaAtivo: true
                 });
+                const result = await this.fireAuth.createUserWithEmailAndPassword(this.email, this.senha);
+                console.log(result);
+
                 this.presentToast('Bem vindo!');
-                this.router.navigateByUrl('tabs');
+                this.router.navigateByUrl('home');
               }
               catch(erro){
                 console.log(erro);

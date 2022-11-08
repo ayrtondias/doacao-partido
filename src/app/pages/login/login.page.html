@@ -11,7 +11,7 @@
         <ion-input placeholder="Senha" type="password" [(ngModel)]="senha"></ion-input>
       </ion-item>
 
-      <ion-button color="#035F65" class="botao" expand="block" (click)="entrar()">Entrar</ion-button>
+      <ion-button color="#035F65" class="botao" class="botao" [disabled]="!canSave()" expand="block" (click)="entrar()">Entrar</ion-button>
       <p class="cadastrar" [routerLink]="['/register']">Criar nova conta</p>
     </div>
 
