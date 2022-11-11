@@ -5,35 +5,35 @@
         <img class="devolta" src="/assets/de-volta.png">
       </a>
     </div>
+    <img class="logo" src="/assets/doacao-financeira.jpg">
 
     <div class="form">
       <ion-item class="item" color=" #D9D9D9">
-        <ion-label position="floating">Nome</ion-label>
-        <ion-input type="text" [(ngModel)]="nome"></ion-input>
+        <ion-label position="stacked">Nome do candidato<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text" [(ngModel)]="nome"></ion-input>
       </ion-item>
       <br>
       <ion-item class="item" color=" #D9D9D9">
-        <ion-label position="floating">Cargo</ion-label>
-        <ion-input type="text" [(ngModel)]="cargo"></ion-input>
+        <ion-label position="stacked">Cargo pretendido<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text" [(ngModel)]="cargo"></ion-input>
       </ion-item>
       <br>
       <ion-item class="item" color=" #D9D9D9">
-        <ion-label position="floating">Partido</ion-label>
-        <ion-input type="text" [(ngModel)]="partido"></ion-input>
+        <ion-label position="stacked">Partido politico<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text" [(ngModel)]="partido"></ion-input>
       </ion-item>
       <br>
       <ion-item class="item" color=" #D9D9D9">
-        <ion-label position="floating">data</ion-label>
-        <ion-input type="text" [(ngModel)]="data"></ion-input>
+        <ion-label position="stacked">Data da doação<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="date" [(ngModel)]="data" maxlength="8"></ion-input>
       </ion-item>
       <br>
       <ion-item class="item" color=" #D9D9D9">
-        <ion-label position="floating">valor</ion-label>
-        <ion-input type="text" [(ngModel)]="valor"></ion-input>
+        <ion-label position="stacked">Valor da doação<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="number" [(ngModel)]="valor" data-mask="__.___.___/____-__" value='__.___.___/____-__'></ion-input>
       </ion-item>
       <br>
-      <ion-button color="#035F65" class="botao" [disabled]="!canSave()" expand="block" (click)="cadastrar()">Cadastrar</ion-button>
-      <p class="cadastrar" [routerLink]="['/login']">Já possui conta?</p>
+      <ion-button color="#035F65" class="botao"  expand="block" (click)="cadastrar()">Cadastrar</ion-button>
     </div>
 
   </div>

@@ -15,7 +15,6 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class RegisterPage implements OnInit {
   loading: HTMLIonLoadingElement;
   nome = '';
-  sobrenome = '';
   cpf = '';
   telefone = '';
   email = '';
@@ -45,60 +44,53 @@ export class RegisterPage implements OnInit {
   canSave(): boolean{
     return Validate.validateEmail(this.email)  &&
     this.senha===this.confsenha &&
-    this.senha.length >= 6;
+    this.senha.length >= 6 &&
+    this.cpf.length >= 11;
   }
 
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Confirme os dados',
-      message: 'Você confirma que seus dados estão corretos?',
+      message: 'Leia seus dados atentamente e confirme: seus dados estão corretos?',
       buttons: [
         {
           text: 'Não',
           role: 'cancel',
           handler: () => {
-            console.log('Você cancelou...');
+            console.log('Você cancelou...')
           }
         },
         {
           text: 'Sim',
           role: 'confirm',
           handler: async () => {
-            this.showLoading();
-            setTimeout( async () => {
-              await this.fecharLoading();
-            },
-            2000);
-            console.log('confirmou!');
-            console.log('cadastrando...');
-            console.log(this.email, this.senha, this.confsenha);
-            if(Validate.validateEmail(this.email) && this.senha === this.confsenha && this.nome.length > 3 && this.sobrenome.length > 3){
-              try{
-                await this.firestore.collection('usuarios').add({
-                  email: this.email,
-                  senha: this.senha,
-                  nome: this.nome,
-                  sobrenome: this.sobrenome,
-                  cpf: this.cpf,
-                  telefone: this.telefone,
-                  estaAtivo: true
-                });
-                const result = await this.fireAuth.createUserWithEmailAndPassword(this.email, this.senha);
-                console.log(result);
-
-                this.presentToast('Bem vindo!');
-                this.router.navigateByUrl('home');
-              }
-              catch(erro){
-                console.log(erro);
-                //alert(erro.message)
+            await this.showLoading();
+            try{
+              const result = await this.fireAuth.createUserWithEmailAndPassword(this.email, this.senha);
+              console.log(result);
+              const uid = result.user.uid;
+              this.firestore.collection('usuarios').doc(uid).set({
+                email: this.email,
+                nome: this.nome,
+                cpf: this.cpf,
+                telefone: this.telefone,
+                bloqueado: false
+              });
+              this.router.navigateByUrl('login');
+              this.presentToast('Usuário criado com sucesso. Agora faça o login para acessar o sistema!');
+            }
+            catch(deuErro){
+              console.log(JSON.stringify(deuErro));
+              if(deuErro.code === 'auth/email-already-in-use'){
+                this.presentToast('Este e-mail já está sendo utilizado!');
+              }else if(deuErro.code === 'auth/weak-password'){
+                this.presentToast('Senha fraca. Tente outra senha!');
+              }else{
+                this.presentToast('Erro desconhecido.');
               }
 
             }
-            else{
-              this.presentToast('Dados inválidos!');
-            }
-
+            await this.fecharLoading();
           }
         },
       ],

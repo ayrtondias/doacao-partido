@@ -8,18 +8,13 @@
       </ion-item>
       <br>
       <ion-item class="item" color=" #D9D9D9">
-        <ion-label position="floating">Sobrenome</ion-label>
-        <ion-input type="sobrenome" [(ngModel)]="sobrenome"></ion-input>
-      </ion-item>
-      <br>
-      <ion-item class="item" color=" #D9D9D9">
         <ion-label position="floating">Cpf</ion-label>
-        <ion-input type="cpf" [(ngModel)]="cpf"></ion-input>
+        <ion-input type="cpf" [(ngModel)]="cpf" minlength="11" maxlength="11"></ion-input>
       </ion-item>
       <br>
       <ion-item class="item" color=" #D9D9D9">
         <ion-label position="floating">Telefone</ion-label>
-        <ion-input type="telefone" [(ngModel)]="telefone"></ion-input>
+        <ion-input type="number" [(ngModel)]="telefone"></ion-input>
       </ion-item>
       <br>
       <ion-item class="item" color=" #D9D9D9">
@@ -29,12 +24,12 @@
       <br>
       <ion-item class="item" color=" #D9D9D9">
         <ion-label position="floating">Senha</ion-label>
-        <ion-input type="password" [(ngModel)]="senha"></ion-input>
+        <ion-input type="password" [(ngModel)]="senha" minlength="6"></ion-input>
       </ion-item>
       <br>
       <ion-item class="item" color=" #D9D9D9">
         <ion-label position="floating">Confirmar Senha</ion-label>
-        <ion-input type="password" [(ngModel)]="confsenha"></ion-input>
+        <ion-input type="password" [(ngModel)]="confsenha" minlength="6"></ion-input>
       </ion-item>
       <br>
       <ion-button color="#035F65" class="botao" [disabled]="!canSave()" expand="block" (click)="cadastrar()">Cadastrar</ion-button>

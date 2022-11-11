@@ -38,13 +38,7 @@ export class DoarCandidatoPage implements OnInit {
     this.presentAlert();
   }
 
-  canSave(): boolean{
-    this.nome !== '' &&
-    this.cargo !== '' &&
-    this.partido !== '' &&
-    this.data !== '' &&
-    this.valor !== '';
-  }
+
 
   async presentAlert() {
     const alert = await this.alertController.create({
