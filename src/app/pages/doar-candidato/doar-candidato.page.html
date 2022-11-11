@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="background">
+    <div class="topo">
+      <a href="#" [routerLink]="['/home']" >
+        <img class="devolta" src="/assets/de-volta.png">
+      </a>
+    </div>
+
+    <div class="form">
+      <ion-item class="item" color=" #D9D9D9">
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" [(ngModel)]="nome"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="item" color=" #D9D9D9">
+        <ion-label position="floating">Cargo</ion-label>
+        <ion-input type="text" [(ngModel)]="cargo"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="item" color=" #D9D9D9">
+        <ion-label position="floating">Partido</ion-label>
+        <ion-input type="text" [(ngModel)]="partido"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="item" color=" #D9D9D9">
+        <ion-label position="floating">data</ion-label>
+        <ion-input type="text" [(ngModel)]="data"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item class="item" color=" #D9D9D9">
+        <ion-label position="floating">valor</ion-label>
+        <ion-input type="text" [(ngModel)]="valor"></ion-input>
+      </ion-item>
+      <br>
+      <ion-button color="#035F65" class="botao" [disabled]="!canSave()" expand="block" (click)="cadastrar()">Cadastrar</ion-button>
+      <p class="cadastrar" [routerLink]="['/login']">Já possui conta?</p>
+    </div>
+
+  </div>
+</ion-content>

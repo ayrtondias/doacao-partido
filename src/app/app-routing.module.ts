@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'registrar-doacao',
-    loadChildren: () => import('./pages/registrar-doacao/registrar-doacao.module').then( m => m.RegistrarDoacaoPageModule)
-  },
-  {
     path: 'doacoes-aprovada',
     loadChildren: () => import('./pages/doacoes-aprovada/doacoes-aprovada.module').then( m => m.DoacoesAprovadaPageModule)
   },
@@ -34,6 +30,18 @@ const routes: Routes = [
   {
     path: 'configuracoes',
     loadChildren: () => import('./pages/configuracoes/configuracoes.module').then( m => m.ConfiguracoesPageModule)
+  },
+  {
+    path: 'escolher',
+    loadChildren: () => import('./pages/escolher/escolher.module').then( m => m.EscolherPageModule)
+  },
+  {
+    path: 'doar-partido',
+    loadChildren: () => import('./pages/doar-partido/doar-partido.module').then( m => m.DoarPartidoPageModule)
+  },
+  {
+    path: 'doar-candidato',
+    loadChildren: () => import('./pages/doar-candidato/doar-candidato.module').then( m => m.DoarCandidatoPageModule)
   },
 
 

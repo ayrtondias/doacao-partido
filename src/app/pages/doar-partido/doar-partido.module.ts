@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RegistrarDoacaoPageRoutingModule } from './registrar-doacao-routing.module';
+import { DoarPartidoPageRoutingModule } from './doar-partido-routing.module';
 
-import { RegistrarDoacaoPage } from './registrar-doacao.page';
+import { DoarPartidoPage } from './doar-partido.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RegistrarDoacaoPageRoutingModule
+    DoarPartidoPageRoutingModule
   ],
-  declarations: [RegistrarDoacaoPage]
+  declarations: [DoarPartidoPage]
 })
-export class RegistrarDoacaoPageModule {}
+export class DoarPartidoPageModule {}
