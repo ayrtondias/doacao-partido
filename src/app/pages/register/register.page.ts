@@ -6,7 +6,6 @@ import { Validate } from '../../util/validate';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',

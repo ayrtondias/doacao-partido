@@ -14,6 +14,7 @@ export class LoginPage implements OnInit {
 
   loading: HTMLIonLoadingElement;
   contador = 0;
+  id = '';
   email = '';
   senha = '';
 
@@ -39,7 +40,7 @@ export class LoginPage implements OnInit {
 
   canSave(): boolean{
     return Validate.validateEmail(this.email)  &&
-    this.senha != '' &&
+    this.senha !== '' &&
     this.senha.length >= 6;
   }
 
@@ -49,8 +50,8 @@ export class LoginPage implements OnInit {
     //this.fireAuth.createUserWithEmailAndPassword()
     try{
       const result = await this.fireAuth.signInWithEmailAndPassword(this.email, this.senha);
-
       console.log(result);
+      const uid = result.user.uid;
       //firestore.collection(usuarios).doc(result.user.uid)
       //if(usuario.estaAtivo===true)
       this.presentToast('Bem vindo!');

@@ -20,6 +20,7 @@ ion-content{
     }
     .form{
       position: relative;
+      top: 130px;
     }
     .item{
       margin-top: 20px;
@@ -43,6 +44,23 @@ ion-content{
       font-weight: 400;
       font-size: 18px;
       line-height: 29px;
+    }
+    .text{
+      position: absolute;
+      top: 60px;
+      margin-left: 20vw;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 50px;
+      line-height: 44px;
+      color: #FFFFFF;
+    }
+    .candidato{
+      position: relative;
+      margin-left: 25%;
+      top: 120px;
+      width: 200px;
+      height: 200px;
     }
   }
 }

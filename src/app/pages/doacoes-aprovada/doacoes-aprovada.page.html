@@ -1,9 +1,20 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>doacoes-aprovada</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="background">
+    <div class="topo">
+      <a href="#" [routerLink]="['/home']" >
+        <img class="devolta" src="/assets/de-volta.png">
+      </a>
+    </div>
+    <div class="text">Doações aprovadas</div>
 
+
+
+      <ul class="tabela">
+        <li class="register" *ngFor="let doar of doacao | async" [routerLink]="['/detalhes-doacao']">
+          <p class="texto">Data da doação: - {{doar.data}}</p>
+          <p class="texto">Valor da doação: - R$ {{doar.valor}}</p>
+          <p class="texto">Data da aprovação: - {{doar.dataAprovacao}}</p>
+        </li>
+      </ul>
+  </div>
 </ion-content>

@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'doar-candidato',
     loadChildren: () => import('./pages/doar-candidato/doar-candidato.module').then( m => m.DoarCandidatoPageModule)
   },
+  {
+    path: 'detalhes-doacao',
+    loadChildren: () => import('./pages/detalhes-doacao/detalhes-doacao.module').then( m => m.DetalhesDoacaoPageModule)
+  },
 
 
 ];
