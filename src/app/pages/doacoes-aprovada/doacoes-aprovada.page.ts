@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras  } from '@angular/router';
 import { Validate } from '../../util/validate';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { LoadingController, ToastController } from '@ionic/angular';
@@ -12,19 +12,33 @@ import { LoadingController, ToastController } from '@ionic/angular';
 export class DoacoesAprovadaPage implements OnInit {
   loading: HTMLIonLoadingElement;
   doacao: any;
+  id: string;
 
   constructor(
     private router: Router,
     public firestore: AngularFirestore,
+
+
     private loadingCtrl: LoadingController,
     private toastController: ToastController
   ) {
     console.log(router.url);
-    this.doacao = firestore.collection('doar-candidato').valueChanges();
+    this.doacao = firestore.collection('doar-candidato').valueChanges({ idField: 'id' });
     console.log(this.doacao);
    }
 
   ngOnInit() {
+  }
+
+  detalhes(id){
+    const navigationExtras: NavigationExtras = {
+      state: {
+        valorParaEnviar: this.id
+      }
+    };
+    this.router.navigate(['detalhes-doacao'], id);
+    console.log(id);
+
   }
 
 }
