@@ -33,11 +33,11 @@ export class DoacoesAprovadaPage implements OnInit {
   detalhes(id){
     const navigationExtras: NavigationExtras = {
       state: {
-        valorParaEnviar: this.id
+        valorParaEnviar: id
       }
     };
-    this.router.navigate(['detalhes-doacao'], id);
-    console.log(id);
+    this.router.navigate(['detalhes-doacao'], navigationExtras);
+    console.log(navigationExtras);
 
   }
 

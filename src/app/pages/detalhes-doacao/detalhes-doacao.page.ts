@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Validate } from '../../util/validate';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { LoadingController, ToastController} from '@ionic/angular';
+import { collection, collectionChanges, Firestore, collectionData,} from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-detalhes-doacao',
@@ -12,6 +14,7 @@ import { LoadingController, ToastController} from '@ionic/angular';
 export class DetalhesDoacaoPage implements OnInit {
   loading: HTMLIonLoadingElement;
   doacao: any;
+  data: any;
   id: any;
 
   constructor(
@@ -21,16 +24,13 @@ export class DetalhesDoacaoPage implements OnInit {
     private loadingCtrl: LoadingController,
     private toastController: ToastController
   ) {
-    const algo = this.route.queryParams.subscribe(params => {
       const getNav = this.router.getCurrentNavigation();
-      if (getNav.extras) {
-        this.id = getNav.extras;
-        console.log(this.id);
-      }
-      return getNav;
+      this.id = getNav.extras.state.valorParaEnviar;
+      console.log(this.id);
 
-    });
-    console.log(algo);
+      this.doacao = firestore.collection('doar-candidato').valueChanges();
+      console.log(this.doacao);
+
 
   }
 
