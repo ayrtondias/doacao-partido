@@ -32,22 +32,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/configuracoes/configuracoes.module').then( m => m.ConfiguracoesPageModule)
   },
   {
-    path: 'escolher',
-    loadChildren: () => import('./pages/escolher/escolher.module').then( m => m.EscolherPageModule)
-  },
-  {
-    path: 'doar-partido',
-    loadChildren: () => import('./pages/doar-partido/doar-partido.module').then( m => m.DoarPartidoPageModule)
-  },
-  {
     path: 'doar-candidato',
     loadChildren: () => import('./pages/doar-candidato/doar-candidato.module').then( m => m.DoarCandidatoPageModule)
   },
   {
-    path: 'detalhes-doacao',
-    loadChildren: () => import('./pages/detalhes-doacao/detalhes-doacao.module').then( m => m.DetalhesDoacaoPageModule)
+    path: 'detalhe',
+    loadChildren: () => import('./pages/detalhe/detalhe.module').then( m => m.DetalhePageModule)
   },
-
 
 ];
 @NgModule({

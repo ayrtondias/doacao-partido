@@ -1,3 +1,4 @@
+import { CadastroService } from './cadastro.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -25,7 +26,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
      AngularFirestoreModule,
      AngularFireAuthModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [CadastroService,
+              { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
 

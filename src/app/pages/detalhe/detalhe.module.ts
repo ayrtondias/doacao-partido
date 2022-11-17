@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DetalhesDoacaoPageRoutingModule } from './detalhes-doacao-routing.module';
+import { DetalhePageRoutingModule } from './detalhe-routing.module';
 
-import { DetalhesDoacaoPage } from './detalhes-doacao.page';
+import { DetalhePage } from './detalhe.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetalhesDoacaoPageRoutingModule
+    DetalhePageRoutingModule
   ],
-  declarations: [DetalhesDoacaoPage]
+  declarations: [DetalhePage]
 })
-export class DetalhesDoacaoPageModule {}
+export class DetalhePageModule {}

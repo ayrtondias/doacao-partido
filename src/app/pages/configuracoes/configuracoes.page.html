@@ -1,11 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>configuracoes</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <div class="background">
+    <div class="topo">
+      <a href="#" [routerLink]="['/home']" >
+        <img class="devolta" src="/assets/de-volta.png">
+      </a>
+    </div>
 
-  <ion-button (click)="sair()" color="danger" size="small">Sair</ion-button>
-
+  <ion-button class="btSair" (click)="sair()" color="danger" size="small">Sair</ion-button>
+</div>
 </ion-content>

@@ -10,7 +10,7 @@
 
 
       <ul class="tabela">
-        <li class="register" *ngFor="let doar of doacao | async" (click)="detalhes(doar.id)">
+        <li class="register" *ngFor="let doar of doacao | async" (click)="presentAlert()">
           <p class="texto">Data da doação: - {{doar.data}}</p>
           <p class="texto">Valor da doação: - R$ {{doar.valor}}</p>
           <p class="texto">Data da aprovação: - {{doar.dataAprovacao}}</p>

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AlertController, LoadingController, ToastController } from '@ionic/angular';
 import { Validate } from '../../util/validate';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { identity } from 'rxjs';
 
 
 @Component({
@@ -56,7 +57,7 @@ export class RegisterPage implements OnInit {
           text: 'Não',
           role: 'cancel',
           handler: () => {
-            console.log('Você cancelou...')
+            console.log('Você cancelou...');
           }
         },
         {
@@ -69,6 +70,7 @@ export class RegisterPage implements OnInit {
               console.log(result);
               const uid = result.user.uid;
               this.firestore.collection('usuarios').doc(uid).set({
+                id: uid,
                 email: this.email,
                 nome: this.nome,
                 cpf: this.cpf,

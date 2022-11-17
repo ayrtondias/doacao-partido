@@ -59,6 +59,7 @@ export class DoarCandidatoPage implements OnInit {
               console.log(result);
               const uid = (await result).uid;
               this.firestore.collection('doar-candidato').add({
+                id: uid,
                 nome: this.nome,
                 cargo: this.cargo,
                 partido: this.partido,
