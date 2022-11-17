@@ -1,3 +1,4 @@
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { CadastroService } from './../../cadastro.service';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -16,14 +17,15 @@ export class ListarDoacoesPage implements OnInit {
   constructor(
     private router: Router,
     public firestore: AngularFirestore,
-    private cadastroProvider: CadastroService
+    private cadastroProvider: CadastroService,
+    private fireAuth: AngularFireAuth
   ) {
-    const result = this.fireAuth.currentUser;
-              console.log(result);
-              const uid = (await result).uid;
 
-    this.doacao = firestore.collection('doar-candidato',  ref =>
-    ref.where('usuarioId', '==', uid)).valueChanges({ idField: 'id' });
+//    const result = this.fireAuth.currentUser;
+//    console.log(result);
+//    const uid = result.uid;
+
+    this.doacao = firestore.collection('doar-candidato').valueChanges({ idField: 'id' });
     console.log(this.doacao);
   }
 
